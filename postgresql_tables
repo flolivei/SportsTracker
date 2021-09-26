@@ -1,0 +1,55 @@
+CREATE TABLE sports (
+  id SERIAL PRIMARY KEY,
+  code INT NOT NULL,
+  name TEXT NOT NULL
+);
+
+CREATE TABLE verifications(
+  id SERIAL PRIMARY KEY,
+  day SMALLINT NOT NULL,
+  month SMALLINT NOT NULL,
+  year SMALLINT NOT NULL,
+  time TIME NOT NULL
+);
+
+CREATE TABLE locations(
+  id SERIAL PRIMARY KEY,
+  code INT NOT NULL,
+  name VARCHAR NOT NULL
+);
+
+CREATE TABLE clubs(
+  id SERIAL PRIMARY KEY,
+  code INT NOT NULL,
+  name VARCHAR NOT NULL,
+  zone VARCHAR NOT NULL,
+  location_id INTEGER NOT NULL,
+  FOREIGN KEY(location_id) REFERENCES locations(id)
+);
+
+CREATE TABLE clubs_status(
+  id SERIAL PRIMARY KEY,
+  club_id INT NOT NULL,
+  available BOOLEAN NOT NULL,
+  verif_id INT NOT NULL,
+  FOREIGN KEY(club_id) REFERENCES clubs(id),
+  FOREIGN KEY(verif_id) REFERENCES verifications(id)
+);
+
+CREATE TABLE sports_status(
+  id SERIAL PRIMARY KEY,
+  sport_id INT NOT NULL,
+  available BOOLEAN NOT NULL,
+  verif_id INT NOT NULL,
+  FOREIGN KEY(sport_id) REFERENCES sports(id),
+  FOREIGN KEY(verif_id) REFERENCES verifications(id)
+);
+
+CREATE TABLE locations_status(
+  id SERIAL PRIMARY KEY,
+  loc_id INT NOT NULL,
+  available BOOLEAN NOT NULL,
+  verif_id INT NOT NULL,
+  FOREIGN KEY(loc_id) REFERENCES locations(id),
+  FOREIGN KEY(verif_id) REFERENCES verifications(id)
+);
