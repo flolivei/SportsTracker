@@ -64,4 +64,4 @@ The database was initially thought to be developed in SQLite, but after some res
 
 The development of SportsTracker took place on a local platform, but with some small adjustments it can be migrated to on online platform like Heroku and automate the execution of the script once a day. 
 
-By manipulating the tables in the database we are able to retrieve data for further analyses on the availability of clubs in a specific city. database was initially developed in SQLite.
+By manipulating the tables in the database we are able to retrieve data for further analyses on the availability of clubs in a specific city.
